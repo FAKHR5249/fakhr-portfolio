@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Mail, Github, Linkedin, Send } from 'lucide-react'
+import { Mail, Github, Linkedin, Send, Phone } from 'lucide-react'
 import Section from './Section'
 import { profile } from '../data/content'
 const FORM_ID = import.meta.env.VITE_FORMSPREE_ID
@@ -23,8 +23,9 @@ export default function Contact() {
     <Section id="contact" title="Contact me" intro="Send a message about internships, projects or collaboration.">
       <div className="contact">
         <ul className="info">
-          <li><Mail size={18} /> {profile.email} <small>(placeholder)</small></li>
-          <li><Linkedin size={18} /> {profile.linkedin ? <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a> : <span>LinkedIn <small>(placeholder)</small></span>}</li>
+          <li><Mail size={18} /> <a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+          <li><Phone size={18} /> <a href="tel:+923215719833">+92 321 5719833</a> · <a href="https://wa.me/923215719833" target="_blank" rel="noreferrer">WhatsApp</a></li>
+          <li><Linkedin size={18} /> <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></li>
           <li><Github size={18} /> <a href={profile.github} target="_blank" rel="noreferrer">github.com/{profile.githubUser}</a></li>
         </ul>
         <form className="glass form" onSubmit={submit}>

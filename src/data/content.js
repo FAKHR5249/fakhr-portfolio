@@ -10,9 +10,9 @@ export const profile = {
   ],
   github: 'https://github.com/FAKHR5249',
   githubUser: 'FAKHR5249',
-  email: 'your.email@example.com', // PLACEHOLDER
-  linkedin: '', // PLACEHOLDER: e.g. https://www.linkedin.com/in/your-handle
-  cv: '/Fakhr_Ul_Islam_CV.pdf',     // replace the file in /public
+  email: 'fakhrulislam5249@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/fakhr-ul-islam-170692340/',
+  cv: '/Fakhr_Ul_Islam_CV.pdf',
   photo: '/profile.jpg'             // add public/profile.jpg; initials show until then
 }
 

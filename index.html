@@ -112,8 +112,10 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut)}.foot{di
 <script>
 /* ===== EDIT YOUR CONTENT HERE ===== */
 const CONFIG = {
-  email: "your.email@example.com",   // PLACEHOLDER: apna email likhein
-  linkedin: "",                       // PLACEHOLDER: e.g. https://www.linkedin.com/in/your-handle
+  email: "fakhrulislam5249@gmail.com",
+  linkedin: "https://www.linkedin.com/in/fakhr-ul-islam-170692340/",
+  phone: "+92 321 5719833",
+  whatsapp: "923215719833",
   formspreeId: "",                    // formspree.io se ID paste karein (form direct email bheje ga)
   githubUser: "FAKHR5249"
 };
@@ -157,7 +159,7 @@ drawProjects("All");
 $("#cyTags").innerHTML=CYBER_TOPICS.map(t=>`<span>${esc(t)}</span>`).join("");
 $("#cyGrid").innerHTML=CYBER_WORK.map(([t,s,n])=>`<div class="card glass"><h3>${esc(t)}</h3><p class="muted">${esc(s)}</p><p class="body">${esc(n)}</p></div>`).join("");
 
-$("#info").innerHTML=`<li>Email: ${esc(CONFIG.email)} <small class="muted">(placeholder)</small></li><li>LinkedIn: ${CONFIG.linkedin?`<a href="${esc(CONFIG.linkedin)}" target="_blank" rel="noopener">Profile</a>`:'<span class="muted">placeholder</span>'}</li><li>GitHub: <a href="https://github.com/${CONFIG.githubUser}" target="_blank" rel="noopener">github.com/${CONFIG.githubUser}</a></li>`;
+$("#info").innerHTML=`<li>Email: <a href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a></li><li>Phone: <a href="tel:+${CONFIG.whatsapp}">${esc(CONFIG.phone)}</a> · <a href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener">WhatsApp</a></li><li>LinkedIn: <a href="${esc(CONFIG.linkedin)}" target="_blank" rel="noopener">View profile</a></li><li>GitHub: <a href="https://github.com/${CONFIG.githubUser}" target="_blank" rel="noopener">github.com/${CONFIG.githubUser}</a></li>`;
 
 fetch(`https://api.github.com/users/${CONFIG.githubUser}/repos?sort=updated&per_page=6`).then(r=>r.ok?r.json():Promise.reject()).then(rs=>{
   $("#ghMsg").textContent=rs.length?"":"No public repositories yet.";
