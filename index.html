@@ -47,6 +47,27 @@ h1{font-size:clamp(2.6rem,7vw,4.8rem);letter-spacing:-.02em;background:linear-gr
 .filters{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
 .pill{border:1px solid var(--line);background:none;color:var(--mut);padding:7px 16px;border-radius:99px;cursor:pointer;font:inherit}.pill.on{background:var(--blue);color:#fff;border-color:var(--blue)}
 .shot{aspect-ratio:16/9;border:1px dashed var(--line);border-radius:10px;display:grid;place-items:center;color:var(--mut);font-size:.85rem;margin-bottom:14px;overflow:hidden}.shot img{width:100%;height:100%;object-fit:cover}
+/* Project screenshot gallery */
+.project-gallery{margin-bottom:16px}
+.gallery-main{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#07172b}
+.gallery-main button{display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.gallery-main img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .25s}
+.gallery-main button:hover img{transform:scale(1.025)}
+.gallery-open-label{position:absolute;right:10px;bottom:10px;padding:6px 10px;border-radius:7px;background:rgba(3,18,37,.82);color:#fff;font-size:.78rem;pointer-events:none}
+.gallery-thumbs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:9px}
+.gallery-thumb{padding:0;aspect-ratio:16/10;overflow:hidden;border:2px solid transparent;border-radius:7px;background:#07172b;cursor:pointer;opacity:.72}
+.gallery-thumb.active,.gallery-thumb:hover{border-color:var(--cyan);opacity:1}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.gallery-lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:60px 70px;background:rgba(1,8,20,.96)}
+.gallery-lightbox.open{display:flex}
+.gallery-lightbox img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:8px;box-shadow:0 10px 50px #000}
+.gallery-lightbox button{position:absolute;border:1px solid rgba(255,255,255,.22);border-radius:9px;background:rgba(15,42,77,.95);color:#fff;cursor:pointer}
+.gallery-close{top:18px;right:22px;font-size:1.8rem;padding:3px 13px}
+.gallery-prev,.gallery-next{top:50%;transform:translateY(-50%);font-size:2rem;padding:4px 13px}
+.gallery-prev{left:18px}.gallery-next{right:18px}
+.gallery-count{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#dbeafe;font-size:.9rem}
+@media(max-width:600px){.gallery-thumbs{grid-template-columns:repeat(4,minmax(0,1fr))}.gallery-lightbox{padding:55px 12px}.gallery-prev{left:5px}.gallery-next{right:5px}}
+
 .tags{display:flex;flex-wrap:wrap;gap:8px}.tags span{border:1px solid var(--line);border-radius:6px;padding:2px 10px;font-size:.85rem;color:var(--cyan)}
 ul{padding-left:20px}
 .contact{display:grid;grid-template-columns:1fr 1.4fr;gap:30px;margin-top:24px}.info{list-style:none;padding:0}.info li{margin-bottom:14px}
@@ -57,6 +78,16 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut)}.foot{di
 .reveal{opacity:0;transform:translateY(24px);transition:.7s}.reveal.in{opacity:1;transform:none}
 @media(max-width:820px){.menu{display:block}.links{position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg2);padding:16px 20px;gap:14px;display:none}.links.open{display:flex}.hero-in,.contact{grid-template-columns:1fr}.avatar{order:-1;width:200px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.reveal{opacity:1;transform:none}.bar i{width:var(--w)}}
+.cyber-point {
+  display: inline-flex;
+  padding: 7px 11px;
+  margin: 4px 5px 4px 0;
+  border: 1px solid #334b68;
+  border-radius: 7px;
+  color: #00c2ff;
+  font-size: 13px;
+  background: rgba(255,255,255,0.02);
+}
 </style>
 </head>
 <body>
@@ -74,7 +105,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut)}.foot{di
 <p class="headline">Software Engineer | AI/ML Enthusiast | Cybersecurity Learner</p>
 <p class="lead">BS Software Engineering student building practical software and learning how to make it intelligent and secure.</p>
 <div class="btns"><a class="btn primary" href="#projects">View My Projects</a><a class="btn" id="cv" href="Fakhr_Ul_Islam_CV.pdf" download>Download CV</a><a class="btn" href="#contact">Contact Me</a></div>
-</div><div class="avatar glass" id="avatar"><img src="profile.jpg" alt="Portrait of Fakhr Ul Islam" width="300" height="300" onerror="this.parentNode.innerHTML='<span>FI</span>'"></div></div></section>
+</div><div class="avatar glass" id="avatar"><img src="/projects/MLInsight/aa.png" alt="Portrait of Fakhr Ul Islam" width="300" height="300" onerror="this.parentNode.innerHTML='<span>FI</span>'"></div></div></section>
 
 <section id="about" class="s"><div class="wrap reveal"><h2>About me</h2>
 <p class="body">I am a Software Engineering student at COMSATS University Islamabad, Attock Campus, expecting to graduate in 2028. I enjoy turning ideas into working software, from web interfaces to the data and logic behind them.</p>
@@ -107,6 +138,13 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut)}.foot{di
 <button class="btn primary" id="send">Send message</button><p class="muted" id="status" role="status"></p></form></div></div></section>
 </main>
 <footer><div class="wrap foot"><p>&copy; <span id="yr"></span> Fakhr Ul Islam</p><a href="https://github.com/FAKHR5249" target="_blank" rel="noopener">GitHub</a></div></footer>
+<div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Project screenshots">
+  <button class="gallery-close" id="galleryClose" aria-label="Close gallery">&times;</button>
+  <button class="gallery-prev" id="galleryPrev" aria-label="Previous image">&#8249;</button>
+  <img id="galleryLargeImage" src="" alt="Project screenshot">
+  <button class="gallery-next" id="galleryNext" aria-label="Next image">&#8250;</button>
+  <span class="gallery-count" id="galleryCount"></span>
+</div>
 <button class="top" id="top" aria-label="Back to top">&#8593;</button>
 
 <script>
@@ -115,29 +153,194 @@ const CONFIG = {
   email: "fakhrulislam5249@gmail.com",
   linkedin: "https://www.linkedin.com/in/fakhr-ul-islam-170692340/",
   phone: "+92 321 5719833",
-  whatsapp: "923215719833",
+  whatsapp: "92 321 5719833",
   formspreeId: "",                    // formspree.io se ID paste karein (form direct email bheje ga)
   githubUser: "FAKHR5249"
 };
 // level 0-100. Apni asal level ke mutabiq badlein.
 const SKILLS = [
  ["Programming",[["Python",60,"Intermediate"],["Java",50,"Intermediate"],["JavaScript",55,"Intermediate"],["PHP",35,"Learning"]]],
- ["Web Development",[["HTML",70,"Comfortable"],["CSS",60,"Intermediate"],["JavaScript",55,"Intermediate"],["React",45,"Learning"]]],
+ ["Web Development",[["HTML",90,"Comfortable"],["CSS",70,"Intermediate"],["JavaScript",65,"Intermediate"],["React",55,"Learning"]]],
  ["Database",[["SQL",50,"Intermediate"],["MongoDB",35,"Learning"]]],
  ["AI & Machine Learning",[["Machine Learning Fundamentals",40,"Learning"],["Data Analysis",45,"Learning"],["Feature Engineering",35,"Learning"],["Scikit-learn",40,"Learning"],["Pandas",45,"Learning"],["Model Development",35,"Learning"]]],
- ["Cybersecurity",[["Cybersecurity Fundamentals",40,"Learning"],["Network Security",30,"Learning"],["Web Security",35,"Learning"],["OWASP Top 10",35,"Learning"],["Ethical Hacking Fundamentals",30,"Learning"],["Vulnerability Assessment",30,"Learning"]]]
+ ["Cybersecurity",[["Cybersecurity Fundamentals",50,"Learning"],["Network Security",45,"Learning"],["Web Security",60,"Learning"],["OWASP Top 10",40,"Learning"],["Ethical Hacking Fundamentals",30,"Learning"],["Vulnerability Assessment",40,"Learning"]]]
 ];
-const EXPERIENCE = [{role:"Intern",company:"AI Lab 99",dates:"[Start date] - [End date / Present]",
- tasks:["[Add a responsibility]","[Add a task you worked on]"],wins:["[Add a real, verifiable outcome, or delete this list]"]}];
-// Real project mil jaye to placeholder:false karein, github/demo/image links dalein.
+
+
+
+
+const EXPERIENCE = [
+  {
+    role: "Machine Learning Intern",
+    company: "AI Lab 99",
+    dates: "13 July 2026 - 24 August 2026",
+
+    tasks: [
+      "Python Programming",
+      "Data Cleaning & Preprocessing",
+      "Exploratory Data Analysis (EDA)",
+      "Machine Learning",
+      "Feature Engineering",
+      "Model Training & Evaluation",
+      "Data Visualization",
+      "Pandas, NumPy & Scikit-learn"
+    ],
+
+    wins: [
+      "Titanic Survival Prediction",
+      "Student Performance Analysis",
+      "House Price Prediction",
+      "Customer Personality Analysis",
+      "NYC Taxi ETA Prediction"
+    ]
+  },
+
+  {
+    role: "Personal Projects & Development",
+    dates: "2026",
+
+    tasks: [
+      "WebShield - Cybersecurity",
+      "DineFlow - Web Development",
+      "CareerAI - Artificial Intelligence",
+      "ML Insight - Machine Learning",
+      "AI-Based Software Project Planning & Requirements Analyzer",
+      "Emergency Help App - Semester Project"
+    ],
+
+    wins: ["WebShield - Cybersecurity",
+      "DineFlow - Web Development",
+      "CareerAI - Artificial Intelligence",
+      "ML Insight - Machine Learning",
+      "AI-Based Software Project Planning & Requirements Analyzer",
+      "Emergency Help App - Semester Project"]
+  }
+];
+
 const PROJECTS = [
- {cat:"Machine Learning",title:"Machine Learning Project",ph:true,desc:"[Placeholder] Describe the problem, dataset and result.",tech:["Python","Scikit-learn","Pandas"],github:"",demo:"",image:""},
- {cat:"AI",title:"AI Project",ph:true,desc:"[Placeholder] Describe what you built, if shareable.",tech:["Python"],github:"",demo:"",image:""},
- {cat:"Web Development",title:"Web Development Project",ph:true,desc:"[Placeholder] Describe the app, your role and the stack.",tech:["HTML","CSS","JavaScript"],github:"",demo:"",image:""},
- {cat:"Cybersecurity",title:"Cybersecurity Project",ph:true,desc:"[Placeholder] A lab, tool or write-up. Mark as in progress if unfinished.",tech:["OWASP","Linux"],github:"",demo:"",image:""}
+{
+  cat: "Machine Learning",
+  title: "ML Insight - Machine Learning Analytics Platform",
+  ph: false,
+  desc: "An interactive machine learning analytics platform that allows users to upload datasets, explore data, perform preprocessing, train machine learning models, compare performance, evaluate results, and generate predictions.",
+  tech: [
+    "Python",
+    "Flask",
+    "Pandas",
+    "NumPy",
+    "Scikit-learn",
+    "Matplotlib",
+    "Seaborn",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Recharts"
+  ],
+  github: "",
+  demo: "",
+  images: [
+  "/projects/MLInsight/1.png",
+  "/projects/MLInsight/2.png",
+  "/projects/MLInsight/3.png",
+  "/projects/MLInsight/4.png",
+  "/projects/MLInsight/5.png",
+  "/projects/MLInsight/6.png",
+  "/projects/MLInsight/7.png",
+  "/projects/MLInsight/8.png",
+  "/projects/MLInsight/9.png",
+  "/projects/MLInsight/10.png",
+  "/projects/MLInsight/11.png",
+  "/projects/MLInsight/12.png",
+  "/projects/MLInsight/13.png",
+  "/projects/MLInsight/14.png",
+  "/projects/MLInsight/15.png",
+  "/projects/MLInsight/16.png",
+  "/projects/MLInsight/17.png"
+]
+},
+
+{cat: "AI",
+  title: "CareerAI - AI Resume Analyzer",
+  ph: false,
+  desc: "An AI-powered resume analyzer that evaluates ATS compatibility, extracts skills, matches job descriptions and provides career recommendations.",
+  tech: ["React", "TypeScript", "AI", "NLP", "Machine Learning"],
+  github: "",
+  demo: "",
+  images: [
+    "/projects/CareerAI/1.png",
+    "/projects/CareerAI/2.png",
+    "/projects/CareerAI/3.png",
+    "/projects/CareerAI/4.png",
+    "/projects/CareerAI/5.png",
+    "/projects/CareerAI/6.png",
+    "/projects/CareerAI/7.png",
+    "/projects/CareerAI/8.png",
+    "/projects/CareerAI/9.png",
+    "/projects/CareerAI/10.png"
+  ]
+},
+ {cat: "Web Development",
+  title: "DineFlow - Restaurant Website",
+  ph: false,
+  desc: "A modern restaurant website with online food ordering, table reservations and admin dashboard.",
+  tech: ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"],
+  github: "",
+  demo: "",
+  images: [
+    "/projects/dineflow/1.png",
+    "/projects/dineflow/2.png",
+    "/projects/dineflow/3.png",
+    "/projects/dineflow/4.png",
+    "/projects/dineflow/5.png",
+    "/projects/dineflow/6.png",
+    "/projects/dineflow/7.png",
+    "/projects/dineflow/8.png"
+  ]
+},
+ 
+{
+  cat: "Cybersecurity",
+  title: "Cybersecurity Project",
+  ph: false,
+  desc: "WebShield is a Python-based cybersecurity platform designed to identify common web application security weaknesses.",
+  tech: ["Python", "Flask", "SQLite", "SQLAlchemy", "HTML5", "CSS3", "JavaScript", "Bootstrap 5", "Chart.js", "Requests", "SSL", "Socket", "ReportLab", "Pytest."],
+  github: "",
+  demo: "",
+  images: [
+    "/projects/webshield/1.png",
+    "/projects/webshield/2.png",
+    "/projects/webshield/3.png",
+    "/projects/webshield/4.png",
+    "/projects/webshield/5.png"
+  ]
+}
 ];
 const CYBER_TOPICS=["Network Security","Web Application Security","OWASP Top 10","Vulnerability Assessment","Ethical Hacking Fundamentals","Security Research and Learning"];
-const CYBER_WORK=[["Labs","In progress","[Add lab platform and rooms you complete]"],["Tools","Learning","[Add tools used, e.g. Nmap, Wireshark, Burp Suite]"],["Write-ups","Coming soon","[Link write-ups once published]"],["Practical projects","Coming soon","[Add projects here]"]];
+
+const CYBER_WORK = [
+  [
+    "Labs",
+    "Learning & Practice",
+    "Network Security Fundamentals\nWeb Application Security Testing\nOWASP Top 10\nVulnerability Assessment\nBasic Network Scanning\nSecurity Analysis & Reporting"
+  ],
+  [
+    "Tools",
+    "Learning & Implementation",
+    "OWASP ZAP\nBurp Suite\nNmap\nWireshark\nPython\nGit & GitHub"
+  ],
+  [
+    "Write-ups",
+    "Coming Soon",
+    "OWASP Top 10 Documentation\nWeb Security Research\nVulnerability Analysis\nSecurity Testing Reports"
+  ],
+  [
+    "Practical Projects",
+    "Project Showcase",
+    "WebShield - Web Application Security Assessment & Monitoring System\nSecurity Assessment\nVulnerability Analysis\nSecurity Monitoring\nReport Generation"
+  ]
+];
+
+
 /* ===== END OF CONTENT ===== */
 
 const $=s=>document.querySelector(s);
@@ -149,15 +352,89 @@ $("#skillGrid").innerHTML=SKILLS.map(([t,items])=>`<div class="card glass"><h3>$
 $("#expList").innerHTML=EXPERIENCE.map(e=>`<article class="card glass"><h3>${esc(e.role)}, ${esc(e.company)}</h3><p class="muted">${esc(e.dates)}</p><h4>Responsibilities</h4><ul>${e.tasks.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><h4>Achievements</h4><ul>${e.wins.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></article>`).join("");
 
 const CATS=["All","Machine Learning","AI","Web Development","Cybersecurity"];
+let activeGalleryImages=[];
+let activeGalleryIndex=0;
+
+function openGallery(images,index=0){
+  if(!images.length)return;
+  activeGalleryImages=images;
+  activeGalleryIndex=index;
+  updateGalleryLightbox();
+  $("#galleryLightbox").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeGallery(){
+  $("#galleryLightbox").classList.remove("open");
+  document.body.style.overflow="";
+}
+function updateGalleryLightbox(){
+  $("#galleryLargeImage").src=activeGalleryImages[activeGalleryIndex];
+  $("#galleryCount").textContent=`${activeGalleryIndex+1} / ${activeGalleryImages.length}`;
+  const multiple=activeGalleryImages.length>1;
+  $("#galleryPrev").style.display=multiple?"block":"none";
+  $("#galleryNext").style.display=multiple?"block":"none";
+}
 function drawProjects(cat){
   $("#filters").innerHTML=CATS.map(c=>`<button class="pill${c===cat?" on":""}" data-c="${c}" aria-pressed="${c===cat}">${c}</button>`).join("");
-  $("#projGrid").innerHTML=PROJECTS.filter(p=>cat==="All"||p.cat===cat).map(p=>`<article class="card glass"><div class="shot">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.title)} screenshot" loading="lazy">`:"Screenshot placeholder"}</div><p class="muted">${esc(p.cat)}${p.ph?" (placeholder)":""}</p><h3>${esc(p.title)}</h3><p class="body">${esc(p.desc)}</p><div class="tags">${p.tech.map(t=>`<span>${esc(t)}</span>`).join("")}</div><div class="btns sm">${p.github?`<a class="btn" href="${esc(p.github)}" target="_blank" rel="noopener">Code</a>`:""}${p.demo?`<a class="btn" href="${esc(p.demo)}" target="_blank" rel="noopener">Live demo</a>`:""}</div></article>`).join("");
+  $("#projGrid").innerHTML=PROJECTS.filter(p=>cat==="All"||p.cat===cat).map((p,projectIndex)=>{
+    const images=Array.isArray(p.images)?p.images:(p.image?[p.image]:[]);
+    const gallery=images.length?`
+      <div class="project-gallery">
+        <div class="gallery-main">
+          <button type="button" class="gallery-main-open" data-gallery-open="${projectIndex}" data-image-index="0" aria-label="Open ${esc(p.title)} screenshots">
+            <img src="${esc(images[0])}" alt="${esc(p.title)} screenshot 1" loading="lazy">
+          </button>
+          <span class="gallery-open-label">Click to enlarge</span>
+        </div>
+        ${images.length>1?`<div class="gallery-thumbs" aria-label="${esc(p.title)} screenshots">${images.map((src,i)=>`<button type="button" class="gallery-thumb${i===0?" active":""}" data-gallery-thumb="${projectIndex}" data-image-index="${i}" aria-label="Show screenshot ${i+1}"><img src="${esc(src)}" alt="${esc(p.title)} screenshot ${i+1}" loading="lazy"></button>`).join("")}</div>`:""}
+      </div>`:
+      `<div class="shot">Screenshots coming soon</div>`;
+    return `<article class="card glass" data-project-index="${projectIndex}">${gallery}<p class="muted">${esc(p.cat)}${p.ph?" (placeholder)":""}</p><h3>${esc(p.title)}</h3><p class="body">${esc(p.desc)}</p><div class="tags">${p.tech.map(t=>`<span>${esc(t)}</span>`).join("")}</div><div class="btns sm">${p.github?`<a class="btn" href="${esc(p.github)}" target="_blank" rel="noopener">Code</a>`:""}${p.demo?`<a class="btn" href="${esc(p.demo)}" target="_blank" rel="noopener">Live demo</a>`:""}</div></article>`;
+  }).join("");
 }
 $("#filters").addEventListener("click",e=>{const b=e.target.closest("[data-c]");if(b)drawProjects(b.dataset.c)});
 drawProjects("All");
 
+$("#projGrid").addEventListener("click",e=>{
+  const thumb=e.target.closest("[data-gallery-thumb]");
+  const main=e.target.closest("[data-gallery-open]");
+  if(thumb){
+    const card=thumb.closest(".card");
+    const project=PROJECTS.find(p=>p.title===card.querySelector("h3").textContent);
+    const images=project?.images?.length?project.images:(project?.image?[project.image]:[]);
+    const index=Number(thumb.dataset.imageIndex);
+    const mainImg=card.querySelector(".gallery-main img");
+    if(images[index]&&mainImg){
+      mainImg.src=images[index];
+      mainImg.alt=`${project.title} screenshot ${index+1}`;
+      card.querySelectorAll(".gallery-thumb").forEach((b,i)=>b.classList.toggle("active",i===index));
+      card.querySelector(".gallery-main-open").dataset.imageIndex=String(index);
+    }
+  }else if(main){
+    const card=main.closest(".card");
+    const project=PROJECTS.find(p=>p.title===card.querySelector("h3").textContent);
+    const images=project?.images?.length?project.images:(project?.image?[project.image]:[]);
+    openGallery(images,Number(main.dataset.imageIndex)||0);
+  }
+});
+$("#galleryClose").addEventListener("click",closeGallery);
+$("#galleryLightbox").addEventListener("click",e=>{if(e.target.id==="galleryLightbox")closeGallery()});
+$("#galleryPrev").addEventListener("click",()=>{
+  activeGalleryIndex=(activeGalleryIndex-1+activeGalleryImages.length)%activeGalleryImages.length;
+  updateGalleryLightbox();
+});
+$("#galleryNext").addEventListener("click",()=>{
+  activeGalleryIndex=(activeGalleryIndex+1)%activeGalleryImages.length;
+  updateGalleryLightbox();
+});
+document.addEventListener("keydown",e=>{
+  if(!$("#galleryLightbox").classList.contains("open"))return;
+  if(e.key==="Escape")closeGallery();
+  if(e.key==="ArrowLeft"&&activeGalleryImages.length>1)$("#galleryPrev").click();
+  if(e.key==="ArrowRight"&&activeGalleryImages.length>1)$("#galleryNext").click();
+});
+
 $("#cyTags").innerHTML=CYBER_TOPICS.map(t=>`<span>${esc(t)}</span>`).join("");
-$("#cyGrid").innerHTML=CYBER_WORK.map(([t,s,n])=>`<div class="card glass"><h3>${esc(t)}</h3><p class="muted">${esc(s)}</p><p class="body">${esc(n)}</p></div>`).join("");
 
 $("#info").innerHTML=`<li>Email: <a href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a></li><li>Phone: <a href="tel:+${CONFIG.whatsapp}">${esc(CONFIG.phone)}</a> · <a href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener">WhatsApp</a></li><li>LinkedIn: <a href="${esc(CONFIG.linkedin)}" target="_blank" rel="noopener">View profile</a></li><li>GitHub: <a href="https://github.com/${CONFIG.githubUser}" target="_blank" rel="noopener">github.com/${CONFIG.githubUser}</a></li>`;
 
@@ -181,6 +458,24 @@ const io="IntersectionObserver"in window?new IntersectionObserver(es=>es.forEach
 document.querySelectorAll(".reveal").forEach(el=>io?io.observe(el):el.classList.add("in"));
 addEventListener("scroll",()=>$("#top").classList.toggle("show",scrollY>600),{passive:true});
 $("#top").addEventListener("click",()=>scrollTo({top:0,behavior:"smooth"}));
+
+
+$("#cyTags").innerHTML = CYBER_TOPICS.map(t =>
+  `<span>${esc(t)}</span>`
+).join("");
+
+$("#cyGrid").innerHTML = CYBER_WORK.map(([t, s, n]) => `
+  <div class="card glass">
+    <h3>${esc(t)}</h3>
+    <p class="muted">${esc(s)}</p>
+    <div class="body">
+      ${n.split(/\r?\n/).map(point => `
+        <span class="cyber-point">${esc(point.trim())}</span>
+      `).join("")}
+    </div>
+  </div>
+`).join("");
+
 </script>
 </body>
 </html>
