@@ -443,14 +443,7 @@ fetch(`https://api.github.com/users/${CONFIG.githubUser}/repos?sort=updated&per_
   $("#ghGrid").innerHTML=rs.map(r=>`<a class="card glass" href="${esc(r.html_url)}" target="_blank" rel="noopener"><h3>${esc(r.name)}</h3><p class="body">${esc(r.description||"No description.")}</p><p class="muted">${esc(r.language||"n/a")} &#9733; ${r.stargazers_count}</p></a>`).join("");
 }).catch(()=>{$("#ghMsg").textContent="Could not load repositories right now. Please use the profile link below."});
 
-$("#form").addEventListener("submit",async e=>{
-  e.preventDefault();const f=e.target,d=Object.fromEntries(new FormData(f)),st=$("#status");
-  if(!CONFIG.formspreeId){location.href=`mailto:${CONFIG.email}?subject=${encodeURIComponent(d.subject)}&body=${encodeURIComponent(d.message+"\n\nFrom: "+d.name+" ("+d.email+")")}`;return}
-  $("#send").disabled=true;st.textContent="Sending...";
-  try{const r=await fetch(`https://formspree.io/f/${CONFIG.formspreeId}`,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)});if(!r.ok)throw 0;st.textContent="Message sent. Thank you.";f.reset()}
-  catch{st.textContent="Message failed to send. Please try again or use email."}
-  $("#send").disabled=false;
-});
+
 
 $("#menu").addEventListener("click",()=>{const o=$("#links").classList.toggle("open");$("#menu").setAttribute("aria-expanded",o)});
 $("#links").addEventListener("click",e=>{if(e.target.tagName==="A")$("#links").classList.remove("open")});
