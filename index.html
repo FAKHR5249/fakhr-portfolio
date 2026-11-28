@@ -70,7 +70,12 @@ h1{font-size:clamp(2.6rem,7vw,4.8rem);letter-spacing:-.02em;background:linear-gr
 
 .tags{display:flex;flex-wrap:wrap;gap:8px}.tags span{border:1px solid var(--line);border-radius:6px;padding:2px 10px;font-size:.85rem;color:var(--cyan)}
 ul{padding-left:20px}
-.contact{display:grid;grid-template-columns:1fr 1.4fr;gap:30px;margin-top:24px}.info{list-style:none;padding:0}.info li{margin-bottom:14px}
+.contact{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:30px;
+  margin-top:24px;
+}.info{list-style:none;padding:0}.info li{margin-bottom:14px}
 .form{padding:24px;display:grid;gap:14px}.form label{display:grid;gap:6px;font-size:.9rem;color:var(--mut)}
 input,textarea{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:8px;padding:11px;color:#fff;font:inherit}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut)}.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -131,11 +136,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut)}.foot{di
 
 <section id="contact" class="s"><div class="wrap reveal"><h2>Contact me</h2><p class="lead">Send a message about internships, projects or collaboration.</p>
 <div class="contact"><ul class="info" id="info"></ul>
-<form class="glass form" id="form"><label>Name<input name="name" required autocomplete="name"></label>
-<label>Email<input name="email" type="email" required autocomplete="email"></label>
-<label>Subject<input name="subject" required></label>
-<label>Message<textarea name="message" rows="5" required></textarea></label>
-<button class="btn primary" id="send">Send message</button><p class="muted" id="status" role="status"></p></form></div></div></section>
+</div></div></section>
 </main>
 <footer><div class="wrap foot"><p>&copy; <span id="yr"></span> Fakhr Ul Islam</p><a href="https://github.com/FAKHR5249" target="_blank" rel="noopener">GitHub</a></div></footer>
 <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Project screenshots">
@@ -159,7 +160,7 @@ const CONFIG = {
 };
 // level 0-100. Apni asal level ke mutabiq badlein.
 const SKILLS = [
- ["Programming",[["Python",60,"Intermediate"],["Java",50,"Intermediate"],["JavaScript",55,"Intermediate"],["PHP",35,"Learning"]]],
+ ["Programming",[["Python",60,"Intermediate"],["Java",55,"Intermediate"],["JavaScript",55,"Intermediate"],["PHP",35,"Learning"]]],
  ["Web Development",[["HTML",90,"Comfortable"],["CSS",70,"Intermediate"],["JavaScript",65,"Intermediate"],["React",55,"Learning"]]],
  ["Database",[["SQL",50,"Intermediate"],["MongoDB",35,"Learning"]]],
  ["AI & Machine Learning",[["Machine Learning Fundamentals",40,"Learning"],["Data Analysis",45,"Learning"],["Feature Engineering",35,"Learning"],["Scikit-learn",40,"Learning"],["Pandas",45,"Learning"],["Model Development",35,"Learning"]]],
@@ -242,7 +243,6 @@ const PROJECTS = [
   "/projects/MLInsight/1.png",
   "/projects/MLInsight/2.png",
   "/projects/MLInsight/3.png",
-  "/projects/MLInsight/4.png",
   "/projects/MLInsight/5.png",
   "/projects/MLInsight/6.png",
   "/projects/MLInsight/7.png",
@@ -442,7 +442,6 @@ fetch(`https://api.github.com/users/${CONFIG.githubUser}/repos?sort=updated&per_
   $("#ghMsg").textContent=rs.length?"":"No public repositories yet.";
   $("#ghGrid").innerHTML=rs.map(r=>`<a class="card glass" href="${esc(r.html_url)}" target="_blank" rel="noopener"><h3>${esc(r.name)}</h3><p class="body">${esc(r.description||"No description.")}</p><p class="muted">${esc(r.language||"n/a")} &#9733; ${r.stargazers_count}</p></a>`).join("");
 }).catch(()=>{$("#ghMsg").textContent="Could not load repositories right now. Please use the profile link below."});
-
 
 
 $("#menu").addEventListener("click",()=>{const o=$("#links").classList.toggle("open");$("#menu").setAttribute("aria-expanded",o)});
